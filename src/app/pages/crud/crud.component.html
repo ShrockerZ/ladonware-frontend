@@ -1,0 +1,59 @@
+<div class="crud">
+    <form (ngSubmit)="createProduct()" [formGroup]="productForm"
+        autocomplete="off">
+        <div class="block-1">
+            <label for="title">Titulo</label>
+            <input type="text" name="title" #title
+            formControlName="title"
+            [class.invalid]="this.productForm.get('title')?.invalid && this.productForm.get('title')?.touched">
+            <label for="description">Descripcion</label>
+            <textarea id="description" rows="4" cols="10"
+            placeholder="descripcions del Producto"
+            formControlName="description"
+            [class.invalid]="this.productForm.get('description')?.invalid && this.productForm.get('description')?.touched"></textarea>
+            <label for="category">Categoria</label>
+            <span class="warning">Si la Categoria no se Encuentra puede ingresarla *</span>
+            <div class="crud-select">
+                <select name="categoryS" id="categoryS" #categoryS
+                formControlName="categoryS" value=""
+                (change)="resetCategory('category')"
+                [class.invalid]="this.productForm.get('categoryS')?.invalid && this.productForm.get('categoryS')?.touched">
+                    <option value="">Agregar nueva categoria...</option>
+                    <option value="tenis">tenis</option>
+                    <option value="zapatos">zapatos</option>
+                </select>
+                <input type="text" name="category" id="category" #category
+                formControlName="category"
+                (keyup)="resetCategory('categoryS')"
+                [class.invalid]="this.productForm.get('category')?.invalid && this.productForm.get('category')?.touched">
+
+            </div>
+            <label for="price">Precio</label>
+            <input type="number" name="price" id="price" #price
+            formControlName="price"
+            [class.invalid]="this.productForm.get('price')?.invalid && this.productForm.get('price')?.touched">
+        </div>
+        <div class="block-2">
+
+            <label for="quantity">Cantidad</label>
+            <input type="number" name="quantity" id="quantity" #quantity
+            formControlName="quantity"
+            [class.invalid]="this.productForm.get('quantity')?.invalid && this.productForm.get('quantity')?.touched">
+            <label for="existences">Inventario</label>
+            <select name="existence" id="existence" #existences
+            formControlName="existence" value="stock"
+            [class.invalid]="this.productForm.get('existence')?.invalid && this.productForm.get('existence')?.touched">
+                <option value="stock">En Stock</option>
+                <option value="limited">Limitado</option>
+                <option value="stock-out">Agotado</option>
+            </select>
+            <label for="image">Cargar Imagen</label>
+            <input type="file" name="image" id="image" #image
+            formControlName="image"
+            [class.invalid]="this.productForm.get('image')?.invalid && this.productForm.get('image')?.touched">
+            <input class="bg-secondary" 
+            type="submit" value="Guardar Registro">
+        </div>
+
+    </form>
+</div>

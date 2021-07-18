@@ -1,0 +1,35 @@
+@import "../../styles/mixins";
+.crud{
+    @include main-content;
+    form{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        label{
+            width: 100%;
+        }
+        input[type="text"],input[type="number"],input[type="file"],textarea,select{
+            width: 100%;
+            border: 1px solid var(--primary);
+        }
+        input[type="submit"]{
+            margin: 1rem 0;
+            font-weight: 600;
+            display: block;
+            width: 100%;
+        }
+    }
+    .crud-select{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.invalid{
+    border: 1px double salmon !important;
+}
+.warning{
+    color: salmon;
+    display: block;
+    font-size: 12px;
+}

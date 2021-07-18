@@ -1,0 +1,16 @@
+
+<div class="search-bar">
+    <!-- search -->
+    <form (ngSubmit)="searchProduct(search.value)">
+        <input type="text" name="search" #search
+        placeholder="Buscar productos">
+        <button class="gray icon-search"
+        (click)="searchProduct(search.value)">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+    <!-- add -->
+    <a  (click)="addProduct()"
+        [routerLink]="['/home/create']" class="button bg-primary">
+        <i class="fas fa-plus"></i>| Añadir producto</a>
+</div>
