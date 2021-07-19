@@ -5,12 +5,20 @@
             <label for="title">Titulo</label>
             <input type="text" name="title" #title
             formControlName="title"
-            [class.invalid]="this.productForm.get('title')?.invalid && this.productForm.get('title')?.touched">
+            [class.invalid]="this.productForm.get('title')?.invalid && 
+                             this.productForm.get('title')?.touched">
+            <span *ngIf="this.productForm.get('title')?.invalid && 
+                         this.productForm.get('title')?.touched"  class="warning">Campo Obligatorio</span>
+
             <label for="description">Descripcion</label>
             <textarea id="description" rows="4" cols="10"
             placeholder="descripcions del Producto"
             formControlName="description"
-            [class.invalid]="this.productForm.get('description')?.invalid && this.productForm.get('description')?.touched"></textarea>
+            [class.invalid]="this.productForm.get('description')?.invalid && 
+                             this.productForm.get('description')?.touched"></textarea>
+            <span *ngIf="this.productForm.get('description')?.invalid && 
+                         this.productForm.get('description')?.touched"  class="warning">Campo Obligatorio</span>
+            
             <label for="category">Categoria</label>
             <span class="warning">Si la Categoria no se Encuentra puede ingresarla *</span>
             <div class="crud-select">
@@ -24,32 +32,51 @@
                 <input type="text" name="category" id="category" #category
                 formControlName="category"
                 (keyup)="resetCategory('categoryS')"
-                [class.invalid]="this.productForm.get('category')?.invalid && this.productForm.get('category')?.touched">
-
+                [class.invalid]="   this.productForm.get('category')?.invalid && 
+                                    this.productForm.get('categoryS')?.value==='' &&
+                                    this.productForm.get('category')?.touched">
             </div>
+            <span *ngIf="this.productForm.get('category')?.invalid && 
+                         this.productForm.get('categoryS')?.value==='' &&
+                         this.productForm.get('category')?.touched"  class="warning">Campo Obligatorio</span>
+
+
             <label for="price">Precio</label>
-            <input type="number" name="price" id="price" #price
-            formControlName="price"
-            [class.invalid]="this.productForm.get('price')?.invalid && this.productForm.get('price')?.touched">
+            <input type="number" name="price" id="price" #price formControlName="price"
+            [class.invalid]="this.productForm.get('price')?.invalid && 
+                             this.productForm.get('price')?.touched">
+            <span *ngIf="this.productForm.get('price')?.invalid && 
+                         this.productForm.get('price')?.touched"  class="warning">Campo Obligatorio</span>
         </div>
         <div class="block-2">
 
             <label for="quantity">Cantidad</label>
             <input type="number" name="quantity" id="quantity" #quantity
             formControlName="quantity"
-            [class.invalid]="this.productForm.get('quantity')?.invalid && this.productForm.get('quantity')?.touched">
+            [class.invalid]="this.productForm.get('quantity')?.invalid && 
+                             this.productForm.get('quantity')?.touched">
+            <span *ngIf="this.productForm.get('quantity')?.invalid && 
+                         this.productForm.get('quantity')?.touched"  class="warning">Campo Obligatorio</span>
+
             <label for="existences">Inventario</label>
             <select name="existences" id="existences" #existences
             formControlName="existences" value="stock"
-            [class.invalid]="this.productForm.get('existences')?.invalid && this.productForm.get('existences')?.touched">
+            [class.invalid]="this.productForm.get('existences')?.invalid && 
+                             this.productForm.get('existences')?.touched">
                 <option value="stock">En Stock</option>
                 <option value="limited">Limitado</option>
                 <option value="out-stock">Agotado</option>
             </select>
+            
+
             <label for="image">Cargar Imagen</label>
             <input type="file" name="image" id="image" #image
             formControlName="image" (change)="changeFile($event)"
-            [class.invalid]="this.productForm.get('image')?.invalid && this.productForm.get('image')?.touched">
+            [class.invalid]="this.productForm.get('image')?.invalid && 
+                             this.productForm.get('image')?.touched">
+            <span *ngIf="this.productForm.get('image')?.invalid && 
+                         this.productForm.get('image')?.touched"  class="warning">Campo Obligatorio</span>
+
             <input class="bg-secondary" 
             type="submit" value="Guardar Registro">
         </div>

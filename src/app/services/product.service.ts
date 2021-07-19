@@ -18,6 +18,8 @@ export class ProductService  {
     private _http:HttpClient) { 
     this.API_URL=environment.API_URL;
     this.headers.append('Content-type','application/json');
+    this.headers.append('Cache-Control','no-cache');
+    this.headers.append('Pragma','no-cache');
   }
   async getCategories(){
     const url=`${environment.API_URL}/categories`;

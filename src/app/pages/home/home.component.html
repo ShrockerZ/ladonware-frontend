@@ -14,11 +14,13 @@
         <tbody>
             <tr *ngFor="let product of products">
                 <td class="product">
-                    <img src="{{imagePath+'/'+product._id+'/image'}}" class="product-img"
+                    <!-- <img src="{{imagePath+'/'+produc}t._id+'/image'}}" class="product-img" -->
+                    <img    
+                            [src]="product.image" class="product-img"
                         alt="{{product.image}}">
                     <div class="product-description"> 
                         <p>{{product.title}} 
-                            <br><span>{{product.description}}</span>
+                            <br><span class="text-left">{{product.description}}</span>
                         </p>
                     </div>
                 </td>

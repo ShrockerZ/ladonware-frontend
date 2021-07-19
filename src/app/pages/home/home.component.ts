@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
@@ -11,12 +11,18 @@ import { environment } from 'src/environments/environment';
 export class HomeComponent implements OnInit {
   products:Product[]=[];
   imagePath:string="";
-  constructor(private _productService:ProductService) { 
+  constructor(private _productService:ProductService,
+              private _cdf:ChangeDetectorRef) { 
     this.imagePath=`${environment.API_URL}/products`;
   }
   ngOnInit(): void {  
     this._productService.products.subscribe(products=>{
       this.products=products;
+      this.products.map(product=>{
+        let date= new Date().getTime();
+        product.image=this.imagePath+'/'+product._id+'/image?dummy='+date;
+        return product
+      })
     });
   }
   deleteProduct(productId:string=""){

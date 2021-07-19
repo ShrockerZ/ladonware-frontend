@@ -35,6 +35,7 @@ export class CrudComponent implements OnInit {
       (param['id'])?this.editing=true:this.editing=false; 
       if(param['id']){
         this.selectedproduct=(await this._productService.getProduct(param['id'])); 
+        if(!this.selectedproduct) this._router.navigate(['/home']);
         this.productForm.reset({
           title:this.selectedproduct.title,
           description:this.selectedproduct.description,
@@ -58,7 +59,7 @@ export class CrudComponent implements OnInit {
       const product= new FormData();
       product.append('title',this.productForm.get('title')?.value)
       product.append('description',this.productForm.get('description')?.value)
-      product.append('category',this.productForm.get('category')?.value)
+      product.append('category',this.productForm.get('categoryS')?.value || this.productForm.get('category')?.value)
       product.append('price',this.productForm.get('price')?.value)
       product.append('quantity',this.productForm.get('quantity')?.value)
       product.append('existences',this.productForm.get('existences')?.value)
@@ -84,12 +85,12 @@ export class CrudComponent implements OnInit {
     this.productForm= this._fb.group({
       title:['',[Validators.required,]],
       description:['',[Validators.required,]],
-      category:['',[]],
+      category:['',[Validators.required]],
       categoryS:['',[]],
       price:['',[Validators.required,]],
       quantity:['',[Validators.required,]],
       existences:['stock',[Validators.required,]],
-      image:['',[Validators.required,]],
+      image:['',[]],
     });
   }
 
