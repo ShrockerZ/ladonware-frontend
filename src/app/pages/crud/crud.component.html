@@ -1,6 +1,6 @@
 <div class="crud">
     <form (ngSubmit)="createProduct()" [formGroup]="productForm"
-        autocomplete="off">
+        autocomplete="off" enctype="multipart/form-data">
         <div class="block-1">
             <label for="title">Titulo</label>
             <input type="text" name="title" #title
@@ -19,8 +19,7 @@
                 (change)="resetCategory('category')"
                 [class.invalid]="this.productForm.get('categoryS')?.invalid && this.productForm.get('categoryS')?.touched">
                     <option value="">Agregar nueva categoria...</option>
-                    <option value="tenis">tenis</option>
-                    <option value="zapatos">zapatos</option>
+                    <option value="{{category.title}}" *ngFor="let category of categories">{{category.title}}</option>
                 </select>
                 <input type="text" name="category" id="category" #category
                 formControlName="category"
@@ -40,16 +39,16 @@
             formControlName="quantity"
             [class.invalid]="this.productForm.get('quantity')?.invalid && this.productForm.get('quantity')?.touched">
             <label for="existences">Inventario</label>
-            <select name="existence" id="existence" #existences
-            formControlName="existence" value="stock"
-            [class.invalid]="this.productForm.get('existence')?.invalid && this.productForm.get('existence')?.touched">
+            <select name="existences" id="existences" #existences
+            formControlName="existences" value="stock"
+            [class.invalid]="this.productForm.get('existences')?.invalid && this.productForm.get('existences')?.touched">
                 <option value="stock">En Stock</option>
                 <option value="limited">Limitado</option>
-                <option value="stock-out">Agotado</option>
+                <option value="out-stock">Agotado</option>
             </select>
             <label for="image">Cargar Imagen</label>
             <input type="file" name="image" id="image" #image
-            formControlName="image"
+            formControlName="image" (change)="changeFile($event)"
             [class.invalid]="this.productForm.get('image')?.invalid && this.productForm.get('image')?.touched">
             <input class="bg-secondary" 
             type="submit" value="Guardar Registro">

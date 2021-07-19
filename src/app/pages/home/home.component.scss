@@ -41,3 +41,28 @@
         }
 
 }
+.stock{
+    position:relative
+}
+
+.stock-green{
+    font-weight: 600;
+    color: rgb(23, 165, 23);
+}
+.stock-green::before{
+    @include circle(rgb(23, 165, 23));
+}
+.stock-red::before{
+    @include circle(rgb(221, 19, 19));
+}
+.stock-yellow::before{
+    @include circle(rgb(226, 226, 14));
+}
+.stock-red{
+    font-weight: 600;
+    color: rgb(221, 19, 19);
+}
+.stock-yellow{
+    font-weight: 600;
+    color: rgb(226, 226, 14);
+}

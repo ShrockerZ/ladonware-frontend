@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -6,12 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
-
-  constructor() { }
+  constructor(
+    private _productService:ProductService,
+    private _route:Router) { }
 
   ngOnInit(): void {
   }
-  searchProduct(searchterm:string){}
-  addProduct(){}
+  searchProduct(searchterm:string,$event:Event){
+    $event.preventDefault();
+    this._productService.searchProduct({title:searchterm});
+  }
+  goToAddProduct(){
+    this._route.navigate(['/home/create']);
+  }
 
 }

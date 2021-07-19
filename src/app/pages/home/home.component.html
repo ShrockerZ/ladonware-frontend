@@ -12,40 +12,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let product of products">
                 <td class="product">
-                    <img src="#" class="product-img">
+                    <img src="{{imagePath+'/'+product._id+'/image'}}" class="product-img"
+                        alt="{{product.image}}">
                     <div class="product-description"> 
-                        <p>Nike Adapt BB02 
-                            <br><span>84% poliester,16% Elastico</span>
+                        <p>{{product.title}} 
+                            <br><span>{{product.description}}</span>
                         </p>
                     </div>
                 </td>
-                <td>Zapatos</td>
-                <td>324.97</td>
-                <td>30</td>
-                <td>En Stock</td>
+                <td>{{product.category.title}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.quantity}}</td>
+                <td class="stock"
+                    [ngClass]="{
+                        'stock-green':product.existences==='stock', 
+                        'stock-yellow':product.existences==='limited', 
+                        'stock-red':product.existences==='out-stock'
+                    }"
+                >{{this.getText(product.existences)}}</td>
                 <td class="action-buttons">
-                    <i class="fas fa-pencil-alt"></i>
-                    <i class="fas fa-trash"></i>
-                </td>
-            </tr>
-            <tr>
-                <td class="product">
-                    <img src="#" class="product-img">
-                    <div class="product-description"> 
-                        <p>Nike Adapt BB02 
-                            <br><span>84% poliester,16% Elastico</span>
-                        </p>
-                    </div>
-                </td>
-                <td>Zapatos</td>
-                <td>324.97</td>
-                <td>30</td>
-                <td>En Stock</td>
-                <td class="action-buttons">
-                    <i class="fas fa-pencil-alt"></i>
-                    <i class="fas fa-trash"></i>
+                    <a [routerLink]="['/home/update',product._id]" >
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                    <i class="fas fa-trash" (click)="deleteProduct(product._id)"></i>
                 </td>
             </tr>
         </tbody>
