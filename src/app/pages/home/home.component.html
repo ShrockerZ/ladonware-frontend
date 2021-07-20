@@ -23,7 +23,7 @@
                     </div>
                 </td>
                 <td class="none">{{product.category.title}}</td>
-                <td class="none">{{product.price}}</td>
+                <td class="none">{{product.price|currency:'USD'}}</td>
                 <td class="none">{{product.quantity}}</td>
                 <td class="stock"
                     [ngClass]="{
