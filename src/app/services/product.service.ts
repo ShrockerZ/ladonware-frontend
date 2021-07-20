@@ -23,11 +23,11 @@ export class ProductService  {
   }
   async getCategories(){
     const url=`${environment.API_URL}/categories`;
-    this.categories.next(await this._http.get<ICategory>(url,{headers:this.headers}).toPromise().then());
+    this.categories.next(await this._http.get<ICategory[]>(url,{headers:this.headers}).toPromise());
   }
   async getProducts(){
     const url=`${environment.API_URL}/products`;
-    this.products.next(await this._http.get<Product[]>(url,{headers:this.headers}).toPromise().then());
+    this.products.next(await this._http.get<Product[]>(url,{headers:this.headers}).toPromise());
   }
   getProduct(id:string){
     const url=`${environment.API_URL}/products/${id}`;
@@ -40,21 +40,21 @@ export class ProductService  {
       this.getProducts();
       return
     }
-    this.products.next(await this._http.get<Product[]>(url,{headers:this.headers}).toPromise().then());
+    this.products.next(await this._http.get<Product[]>(url,{headers:this.headers}).toPromise());
   }
   async createProduct (product:FormData){
     const url=`${environment.API_URL}/products`
-    await this._http.post<Product>(url,product,{headers:this.headers}).toPromise().then();
+    await this._http.post<Product>(url,product,{headers:this.headers}).toPromise();
     this.getProducts();
   }
   async deleteProduct(id:string){
     const url=`${environment.API_URL}/products/${id}`
-    await this._http.delete(url,{headers:this.headers}).toPromise().then();
+    await this._http.delete(url,{headers:this.headers}).toPromise();
     this.getProducts();
   }
   async updateProduct(id:string,product:FormData){
     const url=`${environment.API_URL}/products/${id}`
-    await this._http.put(url,product,{headers:this.headers}).toPromise().then();
+    await this._http.put(url,product,{headers:this.headers}).toPromise();
     this.getProducts();
   }
 }

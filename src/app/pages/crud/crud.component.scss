@@ -25,6 +25,13 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+@media screen and (max-width:768px) {
+    .crud{
+        form{
+            grid-template-columns: 1fr;
+        }
+    }
+}
 .invalid{
     border: 1px double salmon !important;
 }

@@ -14,9 +14,7 @@
         <tbody>
             <tr *ngFor="let product of products">
                 <td class="product">
-                    <!-- <img src="{{imagePath+'/'+produc}t._id+'/image'}}" class="product-img" -->
-                    <img    
-                            [src]="product.image" class="product-img"
+                    <img [src]="product.image" class="product-img"
                         alt="{{product.image}}">
                     <div class="product-description"> 
                         <p>{{product.title}} 
