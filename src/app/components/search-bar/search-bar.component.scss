@@ -8,7 +8,6 @@
         position: relative;
     }
 }
-
 .icon-search{
     padding: 0;
     top: 50%;
@@ -16,4 +15,16 @@
     transform: translateY(-50%);
     position: absolute;
     z-index: 99;
+}
+@media screen and (max-width:768px) {
+    .search-bar{
+        display: flex;
+        flex-wrap: wrap;
+        div{
+            width: 100%;
+            input{
+                width: 100%;
+            }
+        }
+    }
 }

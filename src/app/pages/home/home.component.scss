@@ -66,3 +66,35 @@
     font-weight: 600;
     color: rgb(226, 226, 14);
 }
+.none{
+    display: table-cell;
+}
+@media screen and (max-width:768px){
+    .none{
+        display: none;
+    }
+    td{
+        text-align: left;
+    }
+    .products-table{
+        .product{
+            display: flex;
+            gap: 0;
+            .product-description{
+                text-align: left;
+            }
+            .product-img{
+                width: 25px;
+                height: 25px;
+            }
+        }
+        .stock{
+            font-size: 13px;
+        }
+        .action-buttons{
+            i{
+                padding: 0.8rem;
+            }
+        }
+    }
+}

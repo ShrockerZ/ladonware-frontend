@@ -1,5 +1,7 @@
 // glogal styles
 @import './app/styles/config';
+@import '../node_modules/sweetalert2/dist/sweetalert2.min.css';
+
 :root{
     --sidebar:   #0c2556;
     --body:      #f3f7f9;

@@ -12,6 +12,7 @@ import { PagesModule } from './pages/pages.module';
     AppComponent
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
